@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>serveurBanque:  Fichier source de interfacaccesbddbanque.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="banque-696x465.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">serveurBanque
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">serveurBanqueBdd</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('interfacaccesbddbanque_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">interfacaccesbddbanque.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="interfacaccesbddbanque_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef INTERFACACCESBDDBANQUE_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define INTERFACACCESBDDBANQUE_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QSqlDatabase&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QSqlQuery&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QDebug&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QSqlError&gt;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;QMessageBox&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;QFileInfo&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;QSettings&gt;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QDataStream&gt;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QFileDialog&gt;</span></div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structtype_info_bdd.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structtype_info_bdd.html#ac69f69d36116992ac8772ba08fbae891">   21</a></span>&#160;    QString <a class="code" href="structtype_info_bdd.html#ac69f69d36116992ac8772ba08fbae891">hote</a>;</div><div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structtype_info_bdd.html#a6889f6d70567c2f8d9e939006b4e0901">   22</a></span>&#160;    QString <a class="code" href="structtype_info_bdd.html#a6889f6d70567c2f8d9e939006b4e0901">bd</a>;</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structtype_info_bdd.html#a0c6a12b4cde81fe6d9e598e7c19a17ff">   23</a></span>&#160;    QString <a class="code" href="structtype_info_bdd.html#a0c6a12b4cde81fe6d9e598e7c19a17ff">login</a>;</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structtype_info_bdd.html#a32ab0c6cbc213d4c9111845ba8b77cf3">   24</a></span>&#160;    QString <a class="code" href="structtype_info_bdd.html#a32ab0c6cbc213d4c9111845ba8b77cf3">mdp</a>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}<a class="code" href="structtype_info_bdd.html">typeInfoBdd</a>;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_interfac_acces_b_d_d_banque.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_interfac_acces_b_d_d_banque.html">InterfacAccesBDDBanque</a></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_interfac_acces_b_d_d_banque.html#a936e070d97655d62c067566d7c32f9d1">InterfacAccesBDDBanque</a>(QString hote,QString bd,QString login,QString mdp);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_interfac_acces_b_d_d_banque.html#a37240012705d5008eee898907b25408b">ObtenirSolde</a>(<span class="keywordtype">int</span> numCompte);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_interfac_acces_b_d_d_banque.html#a9213b660330a768de9b06a7e1124e93c">MettreAJourLeSolde</a>(<span class="keywordtype">int</span> numCompte,<span class="keywordtype">float</span> nouveauSolde);</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_interfac_acces_b_d_d_banque.html#a6f05e49427fba1eb60e918f75d87c3b8">CreerCompte</a>(<span class="keywordtype">int</span> numCompte, QString nom,QString prenom, QString ville,<span class="keywordtype">int</span> idAgence);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_interfac_acces_b_d_d_banque.html#a87160a88c7e01f4ce5c1bd756d8d13df">CompteExiste</a>(<span class="keywordtype">int</span> numCompte);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_interfac_acces_b_d_d_banque.html#ae1a6459725f52f4c1f7b15e6abbd06ba">FichierIni</a>();</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_interfac_acces_b_d_d_banque.html#a22bf6980aa26b9ff070312130eeb5f7c">EnregistreFichierIni</a>(<span class="keyword">const</span> <a class="code" href="structtype_info_bdd.html">typeInfoBdd</a> info);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_interfac_acces_b_d_d_banque.html#a252f76c011c3c923e0198f5d8fb5a6a7">   42</a></span>&#160;     QSqlDatabase <a class="code" href="class_interfac_acces_b_d_d_banque.html#a252f76c011c3c923e0198f5d8fb5a6a7">bdd</a>;</div><div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_interfac_acces_b_d_d_banque.html#a6f1c9b7a3cecaeb87e957cedab82c379">   47</a></span>&#160;     <a class="code" href="structtype_info_bdd.html">typeInfoBdd</a> <a class="code" href="class_interfac_acces_b_d_d_banque.html#a6f1c9b7a3cecaeb87e957cedab82c379">infoBdd</a>;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif // INTERFACACCESBDDBANQUE_H</span></div><div class="ttc" id="class_interfac_acces_b_d_d_banque_html_a936e070d97655d62c067566d7c32f9d1"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html#a936e070d97655d62c067566d7c32f9d1">InterfacAccesBDDBanque::InterfacAccesBDDBanque</a></div><div class="ttdeci">InterfacAccesBDDBanque(QString hote, QString bd, QString login, QString mdp)</div><div class="ttdoc">InterfacAccesBDDBanque::InterfacAccesBDDBanque. </div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.cpp:19</div></div>
+<div class="ttc" id="structtype_info_bdd_html_a6889f6d70567c2f8d9e939006b4e0901"><div class="ttname"><a href="structtype_info_bdd.html#a6889f6d70567c2f8d9e939006b4e0901">typeInfoBdd::bd</a></div><div class="ttdeci">QString bd</div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.h:22</div></div>
+<div class="ttc" id="structtype_info_bdd_html_a32ab0c6cbc213d4c9111845ba8b77cf3"><div class="ttname"><a href="structtype_info_bdd.html#a32ab0c6cbc213d4c9111845ba8b77cf3">typeInfoBdd::mdp</a></div><div class="ttdeci">QString mdp</div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.h:24</div></div>
+<div class="ttc" id="class_interfac_acces_b_d_d_banque_html_a252f76c011c3c923e0198f5d8fb5a6a7"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html#a252f76c011c3c923e0198f5d8fb5a6a7">InterfacAccesBDDBanque::bdd</a></div><div class="ttdeci">QSqlDatabase bdd</div><div class="ttdoc">bdd la basse de donnée </div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.h:42</div></div>
+<div class="ttc" id="class_interfac_acces_b_d_d_banque_html_a37240012705d5008eee898907b25408b"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html#a37240012705d5008eee898907b25408b">InterfacAccesBDDBanque::ObtenirSolde</a></div><div class="ttdeci">float ObtenirSolde(int numCompte)</div><div class="ttdoc">InterfacAccesBDDBanque::ObtenirSolde. </div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.cpp:45</div></div>
+<div class="ttc" id="structtype_info_bdd_html_ac69f69d36116992ac8772ba08fbae891"><div class="ttname"><a href="structtype_info_bdd.html#ac69f69d36116992ac8772ba08fbae891">typeInfoBdd::hote</a></div><div class="ttdeci">QString hote</div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.h:21</div></div>
+<div class="ttc" id="class_interfac_acces_b_d_d_banque_html"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html">InterfacAccesBDDBanque</a></div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.h:27</div></div>
+<div class="ttc" id="structtype_info_bdd_html_a0c6a12b4cde81fe6d9e598e7c19a17ff"><div class="ttname"><a href="structtype_info_bdd.html#a0c6a12b4cde81fe6d9e598e7c19a17ff">typeInfoBdd::login</a></div><div class="ttdeci">QString login</div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.h:23</div></div>
+<div class="ttc" id="class_interfac_acces_b_d_d_banque_html_a9213b660330a768de9b06a7e1124e93c"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html#a9213b660330a768de9b06a7e1124e93c">InterfacAccesBDDBanque::MettreAJourLeSolde</a></div><div class="ttdeci">void MettreAJourLeSolde(int numCompte, float nouveauSolde)</div><div class="ttdoc">InterfacAccesBDDBanque::MettreAJourLeSolde. </div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.cpp:72</div></div>
+<div class="ttc" id="class_interfac_acces_b_d_d_banque_html_ae1a6459725f52f4c1f7b15e6abbd06ba"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html#ae1a6459725f52f4c1f7b15e6abbd06ba">InterfacAccesBDDBanque::FichierIni</a></div><div class="ttdeci">void FichierIni()</div><div class="ttdoc">InterfacAccesBDDBanque::FichierIni permet de le lire le fichier ini et deamndé la création si il exis...</div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.cpp:149</div></div>
+<div class="ttc" id="class_interfac_acces_b_d_d_banque_html_a6f1c9b7a3cecaeb87e957cedab82c379"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html#a6f1c9b7a3cecaeb87e957cedab82c379">InterfacAccesBDDBanque::infoBdd</a></div><div class="ttdeci">typeInfoBdd infoBdd</div><div class="ttdoc">infoBdd les info du fichier ini </div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.h:47</div></div>
+<div class="ttc" id="class_interfac_acces_b_d_d_banque_html_a87160a88c7e01f4ce5c1bd756d8d13df"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html#a87160a88c7e01f4ce5c1bd756d8d13df">InterfacAccesBDDBanque::CompteExiste</a></div><div class="ttdeci">bool CompteExiste(int numCompte)</div><div class="ttdoc">InterfacAccesBDDBanque::CompteExiste. </div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.cpp:127</div></div>
+<div class="ttc" id="class_interfac_acces_b_d_d_banque_html_a6f05e49427fba1eb60e918f75d87c3b8"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html#a6f05e49427fba1eb60e918f75d87c3b8">InterfacAccesBDDBanque::CreerCompte</a></div><div class="ttdeci">void CreerCompte(int numCompte, QString nom, QString prenom, QString ville, int idAgence)</div><div class="ttdoc">InterfacAccesBDDBanque::CreerCompte. </div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.cpp:97</div></div>
+<div class="ttc" id="structtype_info_bdd_html"><div class="ttname"><a href="structtype_info_bdd.html">typeInfoBdd</a></div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.h:20</div></div>
+<div class="ttc" id="class_interfac_acces_b_d_d_banque_html_a22bf6980aa26b9ff070312130eeb5f7c"><div class="ttname"><a href="class_interfac_acces_b_d_d_banque.html#a22bf6980aa26b9ff070312130eeb5f7c">InterfacAccesBDDBanque::EnregistreFichierIni</a></div><div class="ttdeci">void EnregistreFichierIni(const typeInfoBdd info)</div><div class="ttdoc">InterfacAccesBDDBanque::EnregistreFichierIni. </div><div class="ttdef"><b>Definition:</b> interfacaccesbddbanque.cpp:180</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="interfacaccesbddbanque_8h.html">interfacaccesbddbanque.h</a></li>
+    <li class="footer">Généré par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

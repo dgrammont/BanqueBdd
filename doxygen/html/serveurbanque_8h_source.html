@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>serveurBanque:  Fichier source de serveurbanque.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="banque-696x465.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">serveurBanque
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">serveurBanqueBdd</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('serveurbanque_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">serveurbanque.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="serveurbanque_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef SERVEURBANQUE_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define SERVEURBANQUE_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="compteclient_8h.html">compteclient.h</a>&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QList&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QTcpServer&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QMessageBox&gt;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;QDataStream&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;QBuffer&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;QByteArray&gt;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_serveur_banque.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_serveur_banque.html">ServeurBanque</a> : <span class="keyword">public</span> QTcpServer</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Q_OBJECT</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_serveur_banque.html#adc86eb5f1f1d1f9b5eb76f4b1cf83cf0">ServeurBanque</a>(QObject *parent=0);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_serveur_banque.html#a12796c6057615e63adc7c79f35d0d11e">Start</a>();</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_serveur_banque.html#ab6ce2d31dacd0e614d3725c049890f7c">Stop</a>();</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_serveur_banque.html#ae7ea2c31254c626d6b6e231062fe743c">EnvoyerMessage</a>(QString msg,<a class="code" href="class_compte_client.html">CompteClient</a> *client);</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_serveur_banque.html#aab2b6f0b69343eb936cb212e463f230c">   32</a></span>&#160;    QList&lt;CompteClient*&gt; <a class="code" href="class_serveur_banque.html#aab2b6f0b69343eb936cb212e463f230c">lesConnexionsClients</a>;</div><div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_serveur_banque.html#a717f26d1909e5e0940da71da23df019c">   36</a></span>&#160;    QString <a class="code" href="class_serveur_banque.html#a717f26d1909e5e0940da71da23df019c">nom</a>;</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_serveur_banque.html#a7cd3af9cd6c3198ecc2733b09c7efb37">   40</a></span>&#160;    QString <a class="code" href="class_serveur_banque.html#a7cd3af9cd6c3198ecc2733b09c7efb37">prenom</a>;</div><div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_serveur_banque.html#a0b255788f50471d521db178930d7cb65">   44</a></span>&#160;    QString <a class="code" href="class_serveur_banque.html#a0b255788f50471d521db178930d7cb65">ville</a>;</div><div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_serveur_banque.html#a9cff2ab30eeb1d47ba3951c408fed99f">   48</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_serveur_banque.html#a9cff2ab30eeb1d47ba3951c408fed99f">idAgence</a>;</div><div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_serveur_banque.html#a9ddd65035598d9e9c875c67b77e9bd2e">   53</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_serveur_banque.html#a9ddd65035598d9e9c875c67b77e9bd2e">numCompte</a>;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span> slots:</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_serveur_banque.html#a8c9443ac3d6f8583f7f8e533f5b2e95a">onServeurBanque_newConnection</a>();</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_serveur_banque.html#a4a611a0ba16cf286f26bf8f5b93d5c51">onCompteClient_disconnected</a>();</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_serveur_banque.html#aaa67411594578a81f9c5358a33931af9">onCompteClient_readyRead</a>();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif // SERVEURBANQUE_H</span></div><div class="ttc" id="class_serveur_banque_html_a4a611a0ba16cf286f26bf8f5b93d5c51"><div class="ttname"><a href="class_serveur_banque.html#a4a611a0ba16cf286f26bf8f5b93d5c51">ServeurBanque::onCompteClient_disconnected</a></div><div class="ttdeci">void onCompteClient_disconnected()</div><div class="ttdoc">onCompteClient_disconnected deconnection </div><div class="ttdef"><b>Definition:</b> serveurbanque.cpp:96</div></div>
+<div class="ttc" id="class_serveur_banque_html_a0b255788f50471d521db178930d7cb65"><div class="ttname"><a href="class_serveur_banque.html#a0b255788f50471d521db178930d7cb65">ServeurBanque::ville</a></div><div class="ttdeci">QString ville</div><div class="ttdoc">ville </div><div class="ttdef"><b>Definition:</b> serveurbanque.h:44</div></div>
+<div class="ttc" id="class_serveur_banque_html_aaa67411594578a81f9c5358a33931af9"><div class="ttname"><a href="class_serveur_banque.html#aaa67411594578a81f9c5358a33931af9">ServeurBanque::onCompteClient_readyRead</a></div><div class="ttdeci">void onCompteClient_readyRead()</div><div class="ttdoc">onCompteClient_readyRead permet de lire les info recu </div><div class="ttdef"><b>Definition:</b> serveurbanque.cpp:114</div></div>
+<div class="ttc" id="class_serveur_banque_html_adc86eb5f1f1d1f9b5eb76f4b1cf83cf0"><div class="ttname"><a href="class_serveur_banque.html#adc86eb5f1f1d1f9b5eb76f4b1cf83cf0">ServeurBanque::ServeurBanque</a></div><div class="ttdeci">ServeurBanque(QObject *parent=0)</div><div class="ttdoc">ServeurBanque::ServeurBanque. </div><div class="ttdef"><b>Definition:</b> serveurbanque.cpp:19</div></div>
+<div class="ttc" id="class_serveur_banque_html_a717f26d1909e5e0940da71da23df019c"><div class="ttname"><a href="class_serveur_banque.html#a717f26d1909e5e0940da71da23df019c">ServeurBanque::nom</a></div><div class="ttdeci">QString nom</div><div class="ttdoc">nom </div><div class="ttdef"><b>Definition:</b> serveurbanque.h:36</div></div>
+<div class="ttc" id="class_serveur_banque_html_ae7ea2c31254c626d6b6e231062fe743c"><div class="ttname"><a href="class_serveur_banque.html#ae7ea2c31254c626d6b6e231062fe743c">ServeurBanque::EnvoyerMessage</a></div><div class="ttdeci">void EnvoyerMessage(QString msg, CompteClient *client)</div><div class="ttdoc">ServeurBanque::EnvoyerMessage. </div><div class="ttdef"><b>Definition:</b> serveurbanque.cpp:58</div></div>
+<div class="ttc" id="class_serveur_banque_html_a12796c6057615e63adc7c79f35d0d11e"><div class="ttname"><a href="class_serveur_banque.html#a12796c6057615e63adc7c79f35d0d11e">ServeurBanque::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">ServeurBanque::Start démare le serveur. </div><div class="ttdef"><b>Definition:</b> serveurbanque.cpp:29</div></div>
+<div class="ttc" id="class_serveur_banque_html_aab2b6f0b69343eb936cb212e463f230c"><div class="ttname"><a href="class_serveur_banque.html#aab2b6f0b69343eb936cb212e463f230c">ServeurBanque::lesConnexionsClients</a></div><div class="ttdeci">QList&lt; CompteClient * &gt; lesConnexionsClients</div><div class="ttdoc">lesConnexionsClients liste des client crée dynamiquement </div><div class="ttdef"><b>Definition:</b> serveurbanque.h:32</div></div>
+<div class="ttc" id="class_serveur_banque_html"><div class="ttname"><a href="class_serveur_banque.html">ServeurBanque</a></div><div class="ttdef"><b>Definition:</b> serveurbanque.h:19</div></div>
+<div class="ttc" id="class_serveur_banque_html_ab6ce2d31dacd0e614d3725c049890f7c"><div class="ttname"><a href="class_serveur_banque.html#ab6ce2d31dacd0e614d3725c049890f7c">ServeurBanque::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdoc">ServeurBanque::Stop Stop le serveur. </div><div class="ttdef"><b>Definition:</b> serveurbanque.cpp:47</div></div>
+<div class="ttc" id="class_serveur_banque_html_a8c9443ac3d6f8583f7f8e533f5b2e95a"><div class="ttname"><a href="class_serveur_banque.html#a8c9443ac3d6f8583f7f8e533f5b2e95a">ServeurBanque::onServeurBanque_newConnection</a></div><div class="ttdeci">void onServeurBanque_newConnection()</div><div class="ttdoc">onServeurBanque_newConnection nouvelle conection </div><div class="ttdef"><b>Definition:</b> serveurbanque.cpp:78</div></div>
+<div class="ttc" id="class_serveur_banque_html_a9cff2ab30eeb1d47ba3951c408fed99f"><div class="ttname"><a href="class_serveur_banque.html#a9cff2ab30eeb1d47ba3951c408fed99f">ServeurBanque::idAgence</a></div><div class="ttdeci">int idAgence</div><div class="ttdoc">idAgence </div><div class="ttdef"><b>Definition:</b> serveurbanque.h:48</div></div>
+<div class="ttc" id="class_serveur_banque_html_a7cd3af9cd6c3198ecc2733b09c7efb37"><div class="ttname"><a href="class_serveur_banque.html#a7cd3af9cd6c3198ecc2733b09c7efb37">ServeurBanque::prenom</a></div><div class="ttdeci">QString prenom</div><div class="ttdoc">prenom </div><div class="ttdef"><b>Definition:</b> serveurbanque.h:40</div></div>
+<div class="ttc" id="class_serveur_banque_html_a9ddd65035598d9e9c875c67b77e9bd2e"><div class="ttname"><a href="class_serveur_banque.html#a9ddd65035598d9e9c875c67b77e9bd2e">ServeurBanque::numCompte</a></div><div class="ttdeci">int numCompte</div><div class="ttdoc">numCompte numéro de compte </div><div class="ttdef"><b>Definition:</b> serveurbanque.h:53</div></div>
+<div class="ttc" id="class_compte_client_html"><div class="ttname"><a href="class_compte_client.html">CompteClient</a></div><div class="ttdef"><b>Definition:</b> compteclient.h:13</div></div>
+<div class="ttc" id="compteclient_8h_html"><div class="ttname"><a href="compteclient_8h.html">compteclient.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="serveurbanque_8h.html">serveurbanque.h</a></li>
+    <li class="footer">Généré par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>
