@@ -1,5 +1,6 @@
 #include "banquemainwindow.h"
 #include "ui_banquemainwindow.h"
+#include "definiton.h"
 /**
 * @date 11/12/20
 * @author dylan grammont

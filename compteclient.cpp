@@ -1,4 +1,5 @@
 #include "compteclient.h"
+
 /**
 * @date 11/12/20
 * @author dylan grammont
@@ -77,11 +78,11 @@ int CompteClient::ObtenirNumCompte()
  * @param idAgence
  * permet de crée un compte et de l'ajouter dans la bdd
  */
-void CompteClient::DefinirNumCompte(int _numCompte,QString nom,QString prenom, QString ville,int idAgence)
+void CompteClient::DefinirNumCompte(typeClient client)
 {
 
-    bd.CreerCompte(_numCompte,nom,prenom,ville,idAgence);
-    numCompte = _numCompte;
+    bd.CreerCompte(client);
+    numCompte = client.numKompte;
     solde = 200;
     bd.MettreAJourLeSolde(numCompte,200);
 

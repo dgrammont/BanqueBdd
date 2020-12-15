@@ -10,6 +10,8 @@
 #include <QSettings>
 #include <QDataStream>
 #include <QFileDialog>
+#include "definiton.h"
+
 /**
 * @date 11/12/20
 * @author dylan grammont
@@ -30,10 +32,13 @@ public:
     InterfacAccesBDDBanque(QString hote,QString bd,QString login,QString mdp);
     float ObtenirSolde(int numCompte);
     void MettreAJourLeSolde(int numCompte,float nouveauSolde);
-    void CreerCompte(int numCompte, QString nom,QString prenom, QString ville,int idAgence);
+    void CreerCompte(typeClient client);
     bool CompteExiste(int numCompte);
     void FichierIni();
     void EnregistreFichierIni(const typeInfoBdd info);
+    QString DemandeNom(int numCompte);
+    QString DemandePrenom(int numCompte);
+    QString ObtenirAgences();
 private:
     /**
       * @brief bdd

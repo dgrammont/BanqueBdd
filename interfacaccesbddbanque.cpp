@@ -94,17 +94,17 @@ void InterfacAccesBDDBanque::MettreAJourLeSolde(int numCompte, float nouveauSold
  * @param idAgence
  * permet de crée un compte
  */
-void InterfacAccesBDDBanque::CreerCompte(int numCompte,QString nom,QString prenom, QString ville,int idAgence)
+void InterfacAccesBDDBanque::CreerCompte(typeClient client)
 {
-    if(!CompteExiste(numCompte)){
+    if(!CompteExiste(client.numKompte)){
         QSqlQuery requetePrepare;
-        qDebug()<<this<<"creer compte"<<numCompte;
+        qDebug()<<this<<"creer compte"<<client.numKompte;
         requetePrepare.prepare("insert into comptes (idCompte,nom,prenom,Ville,id_agence) values (:nro,:nom,:prenom,:ville,:agence)");
-        requetePrepare.bindValue(":nom",nom);
-        requetePrepare.bindValue(":prenom",prenom);
-        requetePrepare.bindValue(":ville",ville);
-        requetePrepare.bindValue(":agence",idAgence);
-        requetePrepare.bindValue(":nro",numCompte);
+        requetePrepare.bindValue(":nom",client.nom);
+        requetePrepare.bindValue(":prenom",client.prenom);
+        requetePrepare.bindValue(":ville",client.ville);
+        requetePrepare.bindValue(":agence",client.agence);
+        requetePrepare.bindValue(":nro",client.numKompte);
         if(!requetePrepare.exec())
         {
             qDebug()<<"pb requete"<<requetePrepare.lastError();
@@ -131,7 +131,6 @@ bool InterfacAccesBDDBanque::CompteExiste(int numCompte)
     bool existe=false;
     requete.prepare("select solde from comptes where idCompte=:id;");
     requete.bindValue(":id",numCompte);
-    requete.exec();
     if (!requete.exec()){
         qDebug()<<"pb requete compte existe "<<requete.lastError();
     }
@@ -190,6 +189,62 @@ void InterfacAccesBDDBanque::EnregistreFichierIni(const typeInfoBdd info)
     paramsSocket.setValue("mdp",info.mdp);
     paramsSocket.endGroup();
 
+}
+
+QString InterfacAccesBDDBanque::DemandeNom(int numCompte)
+{
+    QString nom;
+    QSqlQuery requete;
+    requete.prepare("select nom from comptes where idCompte=:id;");
+    requete.bindValue(":id",numCompte);
+    if (!requete.exec()){
+        qDebug()<<"pb requete compte existe "<<requete.lastError();
+    }
+    else
+    {
+        requete.next();
+        nom = requete.value("nom").toString();
+    }
+    return nom;
+}
+
+QString InterfacAccesBDDBanque::DemandePrenom(int numCompte)
+{
+    QString prenom;
+    QSqlQuery requete;
+    requete.prepare("select  prenom from comptes where idCompte=:id;");
+    requete.bindValue(":id",numCompte);
+    if (!requete.exec()){
+        qDebug()<<"pb requete compte existe "<<requete.lastError();
+    }
+    else
+    {
+        requete.next();
+        prenom = requete.value("prenom").toString();
+    }
+    return prenom;
+}
+
+QString InterfacAccesBDDBanque::ObtenirAgences()
+{
+    QString list;
+
+    QSqlQuery requete;
+    requete.prepare("select nom from agences;");
+    if (!requete.exec()){
+        qDebug()<<"pb requete  agence "<<requete.lastError();
+    }
+    else
+    {
+        while (requete.next()) {
+            list += requete.value("nom").toString() +";";
+            qDebug()<<this<<"list avant chop : "<<list;
+        }
+        if(!list.isEmpty())
+            list.chop(1);
+    }
+    qDebug()<<this<<"list : "<<list;
+    return list;
 }
 
 

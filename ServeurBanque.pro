@@ -25,6 +25,7 @@ SOURCES += \
 HEADERS += \
     banquemainwindow.h \
     compteclient.h \
+    definiton.h \
     interfacaccesbddbanque.h \
     serveurbanque.h
 

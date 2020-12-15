@@ -2,6 +2,7 @@
 #define COMPTECLIENT_H
 #include <QTcpSocket>
 #include <interfacaccesbddbanque.h>
+#include "definiton.h"
 
 /**
 * @date 11/12/20
@@ -20,7 +21,7 @@ public:
     void Deposer(float montant);
     float ObtenirSolde();
     int ObtenirNumCompte();
-    void DefinirNumCompte(int _numCompte,QString nom,QString prenom, QString ville,int idAgence);
+    void DefinirNumCompte(typeClient client);
     bool CompteExite(int _numCompte);
    static  InterfacAccesBDDBanque bd;
 private:

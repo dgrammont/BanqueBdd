@@ -36,7 +36,7 @@ void ServeurBanque::Start()
     }else{
 
 
-     qDebug()<<"serveur en écoute";
+        qDebug()<<"serveur en écoute";
 
     }
 }
@@ -55,7 +55,7 @@ void ServeurBanque::Stop()
  * @param client
  * permet d'envoyer un message au client
  */
-void ServeurBanque::EnvoyerMessage(QString msg, CompteClient *client)
+void ServeurBanque::EnvoyerMessage(QChar commande,QString msg, CompteClient *client)
 {
     quint16 taille=0;
     QBuffer tampon;
@@ -65,7 +65,13 @@ void ServeurBanque::EnvoyerMessage(QString msg, CompteClient *client)
     //association du tampon au flux de sortie
     QDataStream out(&tampon);
     //construction de la trame
-    out<<taille<<msg;
+    out<<taille<<commande<<msg;
+    //envoi du QByteArray du tampon via la socket
+    taille=tampon.size()-sizeof(taille);
+    //placement sur la première postion du flux pour pouvoir modifier la taille
+    tampon.seek(0);
+    //modification de la trame avec la taille reel da la trame
+    out<<taille;
     //envoi du QByteArray du tampon via la socket
     client->write(tampon.buffer());
 
@@ -85,7 +91,7 @@ void ServeurBanque::onServeurBanque_newConnection()
         connect(client,&QTcpSocket::readyRead,this,&ServeurBanque::onCompteClient_readyRead);
         connect(client,&QTcpSocket::disconnected,this,&ServeurBanque::onCompteClient_disconnected);
         lesConnexionsClients.append(client);
-        EnvoyerMessage("Quel est votre numéro de compte ?",client);
+        EnvoyerMessage('L',"Quel est votre numéro de compte ?",client);
         qDebug()<<"new connection : "<<client->peerAddress() ;
     }
 }
@@ -115,9 +121,10 @@ void ServeurBanque::onCompteClient_readyRead()
 {
     CompteClient *client=(CompteClient*)sender();
     quint16 taille=0;
-    float message;
-    int message2;
-    QString message3;
+    float montant=0;
+    int numCpt;
+    QString message;
+
 
     QChar commande;
 
@@ -134,79 +141,77 @@ void ServeurBanque::onCompteClient_readyRead()
             //extraire le message de la banque et le mettre dans message
             in>>commande;
 
-
-
-
-
         }
     }
-    switch (commande.toLatin1()) {
+    switch (commande.toLatin1())
+    {
+
+
+
     case 'N':
-        in>>message2;
 
-        if(client->CompteExite(message2)){
-            EnvoyerMessage("Donnez les information suivante : id d'agence  nom prenom  ville ",client);
+        in>>numCpt;
+        qDebug()<<this<<"cas N :"<<numCpt;
+        if(client->bd.CompteExiste(numCpt)){
 
+            EnvoyerMessage(commande,"Bienvenue : "+client->bd.DemandeNom(numCpt)+" "+client->bd.DemandePrenom(numCpt),client);
+             qDebug()<<this<<"cas N :"<<numCompte;
         }else{
-            EnvoyerMessage("Bienvenue numéro de compte : "+QString::number(client->ObtenirNumCompte()),client);
 
+            EnvoyerMessage('A',client->bd.ObtenirAgences(),client);
+             qDebug()<<this<<"cas A :"<<numCompte;
         }
-        numCompte = message2;
-        qDebug()<<this<<"cas N :"<<numCompte;
+        numCompte = numCpt;
+
 
         break;
+
     case 'R':
-        in>>message;
-        if(client->Retirer(float(message))){
-            EnvoyerMessage("Votre nouveau solde est de : "+QString::number(client->ObtenirSolde()),client);
+        in>>montant;
+        if(client->Retirer(float(montant))){
+            EnvoyerMessage(commande,"Votre nouveau solde est de : "+QString::number(client->ObtenirSolde()),client);
         }else{
-            EnvoyerMessage("Le montant est supérieux au solde",client);
+            EnvoyerMessage(commande,"Le montant est supérieux au solde",client);
         }
 
-        qDebug()<<this<<"cas R :"<<message;
+        qDebug()<<this<<"cas R :"<<montant;
         break;
+
     case 'D':
-        in>>message;
-        client->Deposer(float(message));
-        EnvoyerMessage("Votre nouveau solde est de : "+QString::number(client->ObtenirSolde()),client);
-        qDebug()<<this<<"cas D :"<<message;
+        in>>montant;
+        client->Deposer(float(montant));
+        EnvoyerMessage(commande,"Votre nouveau solde est de : "+QString::number(client->ObtenirSolde()),client);
+        qDebug()<<this<<"cas D :"<<montant;
         break;
+
     case 'S':
-        in>>message;
-        EnvoyerMessage("Votre  solde est de :"+QString::number(client->bd.ObtenirSolde(numCompte)),client);
+        in>>montant;
+        EnvoyerMessage(commande,"Votre  solde est de :"+QString::number(client->bd.ObtenirSolde(numCompte)),client);
         qDebug()<<this<<"cas S :"<<client->bd.ObtenirSolde(numCompte);
         break;
-    case 'M':
-        in>>message3;
-        nom=message3;
-        qDebug()<<this<<"cas M :"<<message3;
-        break;
-    case 'P':
-        in>>message3;
-        qDebug()<<this<<"cas N :"<<message3;
-        prenom=message3;
-        break;
-    case 'V':
-        in>>message3;
-        qDebug()<<this<<"cas N :"<<message3;
-        ville=message3;
-        break;
-    case 'A':
-        in>>message2;
-       qDebug()<<this<<"cas N :"<<message2;
-        idAgence=message2;
 
-        client->DefinirNumCompte(numCompte,nom,prenom, ville,idAgence);
-        EnvoyerMessage("Bienvenue numéro de compte : "+QString::number(client->ObtenirNumCompte()),client);
+
+
+    case 'Y':{
+        typeClient clientStruc;
+        in>>clientStruc.nom;
+        in>>clientStruc.prenom;
+        in>>clientStruc.ville;
+        in>>clientStruc.agence;
+        in>>clientStruc.numKompte;
+        qDebug()<<this<<"cas Y :"<<clientStruc.nom<<clientStruc.prenom<<clientStruc.ville<<clientStruc.agence<<clientStruc.numKompte;
+        EnvoyerMessage(commande,"Structur envoyer : ",client);
+        client->DefinirNumCompte(clientStruc);
+    }
         break;
+
 
     default:
         break;
 
-
-        qDebug()<<"commande : "<<commande;
-        qDebug()<<"message : "<<message;
-        qDebug()<<"ready read : "<<client->peerAddress() ;
     }
+    qDebug()<<"commande : "<<commande;
+    qDebug()<<"message : "<<montant;
+    qDebug()<<"ready read : "<<client->peerAddress() ;
 }
 

@@ -8,6 +8,8 @@
 #include <QDataStream>
 #include <QBuffer>
 #include <QByteArray>
+#include "definiton.h"
+
 
 /**
 * @date 11/12/20
@@ -16,6 +18,9 @@
 * @copyright moi
 * @version 1.0
 */
+
+
+
 class ServeurBanque : public QTcpServer
 {
     Q_OBJECT
@@ -23,7 +28,7 @@ public:
     ServeurBanque(QObject *parent=0);
     void Start();
     void Stop();
-    void EnvoyerMessage(QString msg,CompteClient *client);
+    void EnvoyerMessage(QChar commande, QString msg, CompteClient *client);
 private:
     /**
      * @brief lesConnexionsClients
@@ -51,6 +56,8 @@ private:
      * numéro de compte
      */
     int numCompte;
+
+
 private slots:
     /**
      * @brief onServeurBanque_newConnection
